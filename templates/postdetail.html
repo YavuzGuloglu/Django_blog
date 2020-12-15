@@ -1,0 +1,61 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block body %}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+
+    <title>Post Detay</title>
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <div class="row">
+
+           {% for veri in data %}
+
+            <div class="col-12 col-md-4 col-x1-4">
+               <a href="{% url 'index' %}" class="btn btn-dark" title="Anasayfa' ya git"> <--- </a>
+                <div class="justify-content-start  mt-5">
+                    <img class="img-fluid" src="{{veri.postimage}}" alt=""> 
+                    <div class="mt-2" style="color: darkgray;">
+                        <i><small style="color:black; font-size: medium;">Tarih: {{veri.postdate}} |</small></i>
+                        <i><small style="color:black; font-size: medium;">Yazar: {{veri.postauthor}}</small></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-8 col-xl-8">
+                <div class="mt-5">
+                    <center>
+                        <span>
+                            <h4>{{veri.postheader}}</h4>
+                        </span>
+                    </center>
+
+                    <center>
+                        <span>
+                            <p>{{veri.postcontent}}</p>
+                        </span>
+                    </center>
+                </div>
+            </div>
+
+           
+           {% endfor %}
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+{% endblock body %}

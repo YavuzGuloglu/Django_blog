@@ -1,0 +1,58 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block body %}
+
+
+<style>
+    .divcontent {
+        overflow: hidden;
+        /*taşacak kısımları gizle */
+        white-space: nowrap;
+        /*alt satırı gösterme, alt satıra inme*/
+        text-overflow: ellipsis;
+        /* uzunsa sonuna üç nokta koyar */
+
+    }
+</style>
+
+
+    <div class="mt-5">
+        <center><img class="rounded-circle" width="200px" height="200px" src="{% static 'img/logo.jpg' %}"
+                alt="My image"></center>
+    </div>
+    <hr>
+
+
+        {% for data in info %}
+
+            <div class="col-12 col-md-6 col-xl-6">
+                <div class="container mb-5">
+                    <div class="card-footer ">
+                        <img class="img-fluid" src="{{data.postimage}}">
+                        <br>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <h5>{{data.postheader}}</h5>
+                        </div>
+                        <div class="divcontent">
+                            <small>{{data.postcontent}}</small>
+                        </div>
+                        <span class="mt-5">
+                            <small style="color:darkgray;"> {{data.postdate}} </small>
+                            <small style="color:darkgray;">{{data.postauthor}}</small>
+                            <div class="d-flex justify-content-end">
+                                <a href={% url 'gotopost' data.id %} class="btn btn-dark mt-3 ">Devamını Oku</a>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}    
+
+      
+ 
+
+{% endblock body %}
